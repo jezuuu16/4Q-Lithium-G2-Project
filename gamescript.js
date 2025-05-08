@@ -98,20 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nextExpected > 9) {
                 endTime = Date.now();
                 let timeTaken = (endTime - startTime) / 1000;
-                let timeBonus = Math.max(0, 10 - timeTaken) * 10;
-                let penaltyForMisses = (totalAttempts - correctAnswers) * 10; 
-
-      
-                score = Math.max(0, Math.min(completionScore + timeBonus - penaltyForMisses, 100));
-                updateDisplays(); 
-
+                let timeBonus = Math.max(0, 10 - timeTaken) * 5;
+                let livesPenalty = (3 - lives) * 10;
+            
+                let baseScore = Math.round((correctAnswers / totalAttempts) * 100);
+                let finalScore = Math.max(0, Math.min(baseScore + timeBonus - livesPenalty, 100));
+            
+                if (lives < 3 && finalScore >= 100) {
+                    finalScore = 90 - ((3 - lives - 1) * 10); 
+                }
+            
+                score = Math.round(finalScore);
+                updateDisplays();
+            
                 alert(`🎉 You win! Final Score: ${score}/100`);
                 gameOver = true;
                 saveHighscore(username, score, difficulty);
                 displayHighscores(difficulty);
                 restartButton.style.display = 'inline-block';
-
-                if (score === 100) {
+            
+                if (score === 100 && difficulty !== 'Extreme') {
                     perfectScores[difficulty] = true;
                     localStorage.setItem('perfectScores', JSON.stringify(perfectScores));
                     checkAndShowExtremeButton();
