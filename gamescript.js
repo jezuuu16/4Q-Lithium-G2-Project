@@ -32,18 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkAndShowExtremeButton() {
-        if (perfectScores.Easy && perfectScores.Normal && perfectScores.Hard && extremeButton) {
+    if (perfectScores.Easy && perfectScores.Normal && perfectScores.Hard && difficulty !== "Extreme" && localStorage.getItem('extremeButtonClicked') !== 'true' ) {
+        if (extremeButton) {
             extremeButton.style.display = 'block';
             extremeButton.addEventListener('click', () => {
-                localStorage.setItem('gameDifficulty', 'Extreme');
-                localStorage.setItem('extremeButtonClicked', 'true');
-                extremeButton.style.display = 'none';
-                location.reload();
-            });
-        } else if (extremeButton && localStorage.getItem('extremeButtonClicked') === 'true') {
+            localStorage.setItem('gameDifficulty', 'Extreme');
+            localStorage.setItem('extremeButtonClicked', 'true');
             extremeButton.style.display = 'none';
+            location.reload();
+            });
         }
+    } else if (extremeButton) {
+        extremeButton.style.display = 'none';
     }
+}
 
     if (localStorage.getItem('extremeButtonClicked') === 'true') {
         extremeButton.style.display = 'none';
@@ -162,7 +164,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displayHighscores(difficulty);
-    if (localStorage.getItem('extremeButtonClicked') !== 'true') {
-        checkAndShowExtremeButton();
-    }
+    checkAndShowExtremeButton();
 });
