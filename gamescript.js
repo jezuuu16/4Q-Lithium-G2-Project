@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 endTime = Date.now();
                 let timeTaken = (endTime - startTime) / 1000;
                 let timeBonus = Math.max(0, 10 - timeTaken) * 10;
-                let completionScore = 50;
                 let penaltyForMisses = (totalAttempts - correctAnswers) * 10; 
 
       
