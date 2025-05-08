@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 extremeButton.style.display = 'none';
                 location.reload();
             });
-        } else if (extremeButton) {
+        } else if (extremeButton && localStorage.getItem('extremeButtonClicked') === 'true') {
             extremeButton.style.display = 'none';
         }
     }
@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('extremeButtonClicked') === 'true') {
         extremeButton.style.display = 'none';
     } else {
-        checkAndShowExtremeButton(); 
+        checkAndShowExtremeButton();
     }
 
     updateDisplays();
 
-    let displayTime = 3000; 
+    let displayTime = 3000;
     if (difficulty === "Easy") displayTime = 5000;
     if (difficulty === "Hard") displayTime = 2000;
-    if (difficulty === "Extreme") displayTime = 1000; 
+    if (difficulty === "Extreme") displayTime = 1000;
 
     const grid = document.createElement('div');
     grid.id = "game-grid";
@@ -97,7 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 endTime = Date.now();
                 let timeTaken = (endTime - startTime) / 1000;
                 let timeBonus = Math.max(0, 10 - timeTaken) * 10;
-                score = Math.min(Math.round((correctAnswers / totalAttempts) * 100 + timeBonus), 100);
+                let completionScore = 50;
+                let penaltyForMisses = (totalAttempts - correctAnswers) * 10; 
+
+      
+                score = Math.max(0, Math.min(completionScore + timeBonus - penaltyForMisses, 100));
+                updateDisplays(); 
+
                 alert(`🎉 You win! Final Score: ${score}/100`);
                 gameOver = true;
                 saveHighscore(username, score, difficulty);
