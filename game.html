@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECALL: 360</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <header>
+        <h1 style="color: yellow;">GAME STARTED!</h1>
+    </header>
+
+    <nav class="navbar">
+        <button class="menu-button">MENU</button>
+        <div class="dropdown-content">
+            <div class="dropdown-box home-box">
+                <a href="index.html">HOME</a>
+            </div>
+            <div class="dropdown-box difficulty-box">
+                <a href="difficulty.html">DIFFICULTY</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="info-container">
+            <div id="difficulty-output" class="info-box" role="status" aria-live="polite"></div>
+            <div id="lives-display" class="info-box">
+                <span>Lives:</span>
+                <div class="heart"></div>
+            </div>
+            <div id="score-display" class="info-box"></div>
+        </section>
+
+        <section id="top-scores-display">
+            <h3>Top 3 High Scores</h3>
+            <div id="highscore-1">
+                <strong>1st:</strong> <span id="highscore-name-1"></span> - <span id="highscore-score-1"></span>
+            </div>
+            <div id="highscore-2">
+                <strong>2nd:</strong> <span id="highscore-name-2"></span> - <span id="highscore-score-2"></span>
+            </div>
+            <div id="highscore-3">
+                <strong>3rd:</strong> <span id="highscore-name-3"></span> - <span id="highscore-score-3"></span>
+            </div>
+        </section>
+
+        <section>
+            <button id="restart-button" onclick="location.reload()">RESTART</button>
+            <button id="extreme-button">🔥 EXTREME MODE! 🔥</button> 
+        </section>
+    </main>
+
+    <script src="gamescript.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>RECALL: 360</title>
+  </head>
+  <body>
+    <div class="background">
+      <img class="dragonite pixelart" src="dragonite.gif" width="180x" height="180px">
+  
+      <div class="kyogre">
+     <img class="kyogre-sprite pixelart face-right" src="sprite1.png" alt="kyogre" width="180x" height="180px">
+      </div>
+      <main>
+        <h1 class="title">Recall360</h1>
+        <h2 class="press-start" onclick="window.location.href='difficulty.html';">PRESS START</h2>
+       
+        <nav>
+          <form id="userForm">
+              <button type="button" id="closeFormBtn">X</button>
+              <input type="text" id="usernameInput" placeholder="Enter your username">
+              <button type="submit">Submit</button>
+              <button type="button" id="removeUserBtn">Remove User</button>
+          </form>
+          <a href="#" class="menu-btn" id="enter-user-btn">enter user</a>
+          <a href="#" class="menu-btn" id="mechanics-btn">mechanics</a>
+        </nav>
+        <div id="mechanics-box"></div>
+      </main>
+    </div>
+
+    <script src="index.js">
+    </script>
+
+  </body>
+</html>

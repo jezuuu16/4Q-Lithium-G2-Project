@@ -1,0 +1,276 @@
+:root {
+    --pixel-size--: 3;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.background{
+    background-image: url('background4.png');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.dragonite {
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    z-index: 1;
+}
+
+.kyogre {
+    position: absolute;
+    left: 150px;  
+    top: 70px;
+    width: calc(45px * var(--pixel-size--));
+    height: calc(45px * var(--pixel-size--));
+    overflow: hidden;
+    animation: moveRight 5s linear infinite, hoverDownUp 1.3s ease-in-out infinite;
+
+}
+
+.kyogre-sprite{
+    animation: moveSpritesheet 1s steps(4) infinite;
+    width: calc(180px * var(--pixel-size--));
+    height: calc(180px * var(--pixel-size--));
+    position: absolute;
+
+ }
+
+
+ .face-right{
+    top: calc(-90px * var(--pixel-size--));
+ }
+
+ .pixelart{
+    image-rendering: pixelated;
+ }
+
+
+main {
+    text-align: center;
+    position: relative;
+}
+
+
+#enter-user-btn {
+    display: inline-block;
+    position: relative; 
+    z-index: 10; 
+    margin-bottom: 10px; 
+}
+
+
+#userForm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 3px solid #ffcc00;
+    border-radius: 10px;
+    z-index: 10; 
+}
+
+#user-form input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#user-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3862bd;
+    color: white;
+    border: 2px solid #0A369D;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+#user-form button:hover {
+    background-color: #FF1C1C;
+}
+
+#removeUserBtn {
+    margin-top: 10px; 
+    background-color: #FF4444; 
+    color: white;
+}
+
+
+#mechanics-box {
+    display: none;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    padding: 15px;
+    background: #fffffff2;
+    font-family: 'Press Start 2P';
+    font-size: 12px;
+    color: black;
+    border: 3px solid #0A369D;
+    z-index: 30;
+    text-align: left;
+}
+
+#mechanics-box > div { 
+    position: relative;
+}
+
+
+#closeMechanicsBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+    background-color: #FF1C1C;
+    font-weight: bold;
+    padding: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#closeMechanicsBtn:hover {
+    opacity: 1;
+}
+
+.title {
+    font-weight: bold;
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 90px;
+    color: #ffcb05;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+    text-shadow:    
+        -3px -3px 0 #3862bd,
+        3px -3px 0 #3862bd, 
+        -3px 3px 0 #3862bd,
+         3px 3px 0 #3862bd;
+    animation: hoverUpDown 3.0s ease-in-out infinite;
+}
+
+.press-start {
+    font-family: 'Press Start 2P';
+    font-size: 14px;
+    background: #3862bd; 
+    color: #FFFFFF; 
+    padding: 12px 32px;
+    border: 3px solid #0A369D; 
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    animation: shrinkGrow 2.0s ease-in-out infinite;
+    
+
+    box-shadow:
+       
+        0px 6px 0 #131415,  
+        2px 2px 0 #627aaf, 
+        -2px -2px 0 #627aaf; 
+    
+    transition: all 0.1s ease-in-out;
+}
+
+
+.press-start:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.press-start:hover {
+    transform: translateY(2px);
+    background-color: #FF1C1C;
+}
+
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-btn {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #FFCC00;
+    padding: 12px 50px;
+    border: 3px solid #0A369D;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0px 4px 0 blue;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+.menu-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+@keyframes moveSpritesheet {
+    from{
+        transform: translate3d(0px, 0, 0)
+    }
+    to{
+        transform: translate3d(-100%, 0, 0)
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        left: -150px; 
+    }
+     100% {
+         left: 100%;  
+     }
+}
+
+@keyframes hoverUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+}
+
+@keyframes shrinkGrow{
+    0%, 100% {
+     transform: scale(1);
+    }
+    50% {
+     transform: scale(1.1); 
+    }
+ }
+
+@keyframes hoverDownUp {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+}
+
